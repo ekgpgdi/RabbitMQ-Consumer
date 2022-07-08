@@ -5,42 +5,54 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Component
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = User.class)
 public class User implements Serializable {
-    private String userId;
-    private String userName;
+    private String email;
+    private String name;
+    private UUID uuid;
 
-    public User(String userId, String userName) {
-        this.userId = userId;
-        this.userName = userName;
+    public User(String email, String name, UUID uuid) {
+        this.email = email;
+        this.name = name;
+        this.uuid = uuid;
     }
 
     public User() {
     }
 
-    public String getUserId() {
-        return userId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", uuid='" + uuid + '\'' +
                 '}';
     }
 }
